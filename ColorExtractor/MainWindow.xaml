@@ -5,8 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ColorExtractor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Color Extractor" Width="500" Height="450" MinWidth="500" MinHeight="450" WindowStartupLocation="CenterScreen" Background="#333" Icon="Icon.ico" ShowInTaskbar="True">
+    <Window.DataContext>
+        <local:ColorExtractorViewModel></local:ColorExtractorViewModel>
+    </Window.DataContext>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
         
+        <!-- File Picker -->
+        <Grid Grid.Row="0" Margin="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="40"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="PathBox" Text="{Binding Path}" Grid.Column="0"></TextBox>
+            <Button Name="BrowseButton" Grid.Column="1" Content=".." Click="BrowseButton_Click" Margin="2,0,0,0"></Button>
+        </Grid>
+
+        <Button Name="StartButton" Grid.Row="1" Content="Start" Click="StartButton_Click" Margin="1"></Button>
+
+        <Border Grid.Row="2" Margin="1">
+            <Image Source="{Binding ResultImage}" Stretch="Uniform" RenderOptions.BitmapScalingMode="NearestNeighbor"></Image>
+        </Border>
+
+        <Button Name="SaveButton" Grid.Row="3" Content="Save" Click="SaveButton_Click" Margin="1"></Button>
     </Grid>
 </Window>
