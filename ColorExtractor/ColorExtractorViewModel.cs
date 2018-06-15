@@ -13,9 +13,11 @@ namespace ColorExtractor
     {
         string path;
         BitmapSource resultImage;
+        Sort selectedSort = Sort.HueSaturationLightness;
 
         public string Path { get => path; set => SetField(ref path, value); }
         public BitmapSource ResultImage { get => resultImage; set => SetField(ref resultImage, value); }
+        public Sort SelectedSort { get => selectedSort; set => SetField(ref selectedSort, value); }
 
         public ColorExtractorViewModel()
         {
